@@ -3,6 +3,8 @@
 
 namespace Core;
 
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 class View
 {
@@ -24,8 +26,8 @@ class View
         static $twig = null;
 
         if ($twig === null) {
-            $loader = new \Twig\Loader\FilesystemLoader('../App/Views');
-            $twig = new \Twig\Environment($loader);
+            $loader = new FilesystemLoader('../App/Views');
+            $twig = new Environment($loader);
         }
 
         echo $twig->render($template, $args);
