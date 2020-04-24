@@ -196,3 +196,19 @@ Stack trace: #0 C:\laragon\www\mvc\public\index.php(16): Core\Router->dispatch('
 #1 {main}
 Thrown in 'C:\laragon\www\mvc\Core\Router.php' on line 80
 
+[24-Apr-2020 09:32:37 UTC] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 C:\laragon\www\mvc\public\index.php(16): Core\Router->dispatch('products')
+#1 {main}
+Thrown in 'C:\laragon\www\mvc\Core\Router.php' on line 80
+
+[24-Apr-2020 09:32:47 UTC] Uncaught exception: 'Exception' with message 'No route matched.'
+Stack trace: #0 C:\laragon\www\mvc\public\index.php(16): Core\Router->dispatch('nee')
+#1 {main}
+Thrown in 'C:\laragon\www\mvc\Core\Router.php' on line 80
+
+[24-Apr-2020 09:32:55 UTC] Uncaught exception: 'Exception' with message 'Method neeAction not found in controller App\Controllers\Posts'
+Stack trace: #0 C:\laragon\www\mvc\Core\Router.php(72): Core\Controller->__call('nee', Array)
+#1 C:\laragon\www\mvc\public\index.php(16): Core\Router->dispatch('posts/nee')
+#2 {main}
+Thrown in 'C:\laragon\www\mvc\Core\Controller.php' on line 27
+
