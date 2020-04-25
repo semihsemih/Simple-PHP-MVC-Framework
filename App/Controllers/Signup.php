@@ -18,8 +18,11 @@ class Signup extends Controller
     {
         $user = new User($_POST);
 
-        $user->save();
+        if ($user->save()) {
+            View::renderTemplate('Signup/success.html');
+        } else {
+            var_dump($user->errors);
+        }
 
-        View::renderTemplate('Signup/success.html');
     }
 }
