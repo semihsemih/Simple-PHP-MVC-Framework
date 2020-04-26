@@ -40,7 +40,7 @@ class Error
             $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "\n";
 
             error_log($message);
-            View::renderTemplate("$code.html");
+            View::renderTemplate("$code.twig");
         }
     }
 }

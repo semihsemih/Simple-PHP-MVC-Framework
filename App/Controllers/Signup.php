@@ -11,7 +11,7 @@ class Signup extends Controller
 {
     public function newAction()
     {
-        View::renderTemplate('Signup/new.html');
+        View::renderTemplate('Signup/new.twig');
     }
 
     public function createAction()
@@ -21,12 +21,12 @@ class Signup extends Controller
         if ($user->save()) {
             header('Location: http://' . $_SERVER['HTTP_HOST'] . '/signup/success', true, 303);
         } else {
-            View::renderTemplate('Signup/new.html', ['user' => $user]);
+            View::renderTemplate('Signup/new.twig', ['user' => $user]);
         }
     }
 
     public function successAction()
     {
-        View::renderTemplate('Signup/success.html');
+        View::renderTemplate('Signup/success.twig');
     }
 }
