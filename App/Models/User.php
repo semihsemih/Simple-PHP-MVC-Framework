@@ -49,12 +49,8 @@ class User extends Model
             $this->errors[] = 'Invalid email';
         }
 
-        if ($this->emailExists($this->email)) {
+        if (static::emailExists($this->email)) {
             $this->errors[] = 'Email already taken.';
-        }
-
-        if ($this->password !== $this->password_confirmation) {
-            $this->errors[] = 'Password must match confirmation';
         }
 
         if (strlen($this->password) < 6) {
@@ -70,7 +66,7 @@ class User extends Model
         }
     }
 
-    public function emailExists($email)
+    public static function emailExists($email)
     {
         $sql = 'SELECT * FROM users WHERE email = :email';
 
