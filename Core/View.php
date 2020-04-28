@@ -3,6 +3,7 @@
 
 namespace Core;
 
+use App\Auth;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -28,7 +29,7 @@ class View
         if ($twig === null) {
             $loader = new FilesystemLoader('../App/Views');
             $twig = new Environment($loader);
-            $twig->addGlobal('session', $_SESSION);
+            $twig->addGlobal('is_logged_in', Auth::isLoggedIn());
         }
 
         echo $twig->render($template, $args);
