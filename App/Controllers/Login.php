@@ -17,7 +17,15 @@ class Login extends Controller
 
     public function createAction()
     {
-        $user = User::findByEmail($_POST['email']);
-        var_dump($user);
+        $user = User::authenticate($_POST['email'], $_POST['password']);
+
+        if ($user) {
+            header('Location: http://' . $_SERVER['HTTP_HOST'] . '/', true, 303);
+            exit;
+        } else {
+            View::renderTemplate('Login/new.twig', [
+                'email' => $_POST['email']
+            ]);
+        }
     }
 }

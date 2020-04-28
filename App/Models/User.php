@@ -85,4 +85,17 @@ class User extends Model
 
         return $stmt->fetch();
     }
+
+    public static function authenticate($email, $password)
+    {
+        $user = self::findByEmail($email);
+
+        if ($user) {
+            if (password_verify($password, $user->password_hash)) {
+                return $user;
+            }
+        }
+
+        return false;
+    }
 }
