@@ -20,8 +20,7 @@ class Login extends Controller
         $user = User::authenticate($_POST['email'], $_POST['password']);
 
         if ($user) {
-            header('Location: http://' . $_SERVER['HTTP_HOST'] . '/', true, 303);
-            exit;
+            $this->redirect('/');
         } else {
             View::renderTemplate('Login/new.twig', [
                 'email' => $_POST['email']
