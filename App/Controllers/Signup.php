@@ -18,7 +18,7 @@ class Signup extends Controller
     {
         $user = new User($_POST);
 
-        if ($user->save()) {
+        if ($user->save()) {i
             $this->redirect('/signup/success');
         } else {
             View::renderTemplate('Signup/new.twig', ['user' => $user]);
