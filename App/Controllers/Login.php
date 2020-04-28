@@ -23,7 +23,7 @@ class Login extends Controller
         if ($user) {
             Auth::login($user);
 
-            $this->redirect('/');
+            $this->redirect(Auth::getReturnToPage());
         } else {
             View::renderTemplate('Login/new.twig', [
                 'email' => $_POST['email']

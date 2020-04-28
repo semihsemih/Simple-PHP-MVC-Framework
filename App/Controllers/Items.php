@@ -8,11 +8,13 @@ use Core\View;
 
 class Items extends Controller
 {
+    protected function before()
+    {
+        $this->requireLogin();
+    }
+
     public function indexAction()
     {
-        if (!Auth::isLoggedIn())
-            $this->redirect('/login');
-
         View::renderTemplate('Items/index.twig');
     }
 }
