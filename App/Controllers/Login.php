@@ -28,7 +28,7 @@ class Login extends Controller
 
             $this->redirect(Auth::getReturnToPage());
         } else {
-            Flash::addMessage('Login unsuccessful, please try again.');
+            Flash::addMessage('Login unsuccessful, please try again.', Flash::WARNING);
 
             View::renderTemplate('Login/new.twig', [
                 'email' => $_POST['email']
