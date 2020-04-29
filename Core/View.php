@@ -4,6 +4,7 @@
 namespace Core;
 
 use App\Auth;
+use App\Flash;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -30,6 +31,7 @@ class View
             $loader = new FilesystemLoader('../App/Views');
             $twig = new Environment($loader);
             $twig->addGlobal('current_user', Auth::getUser());
+            $twig->addGlobal('flash_messages', Flash::getMessages());
         }
 
         echo $twig->render($template, $args);
