@@ -1,7 +1,5 @@
 <?php
 
-ini_set('session.cookie_lifetime', '864000');
-
 require '../vendor/autoload.php';
 
 error_reporting(E_ALL);
