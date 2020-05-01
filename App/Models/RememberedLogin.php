@@ -30,4 +30,9 @@ class RememberedLogin extends Model
     {
         return User::findByID($this->user_id);
     }
+
+    public function hasExpired()
+    {
+        return strtotime($this->expires_at) < time();
+    }
 }
