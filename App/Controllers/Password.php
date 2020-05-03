@@ -38,7 +38,7 @@ class Password extends Controller
         $user = $this->getUserOrExit($token);
 
         if ($user->resetPassword($_POST['password'])) {
-            echo "Password valid";
+            View::renderTemplate('Password/reset_success.twig');
         } else {
             View::renderTemplate('Password/reset.twig', [
                 'token' => $token,
