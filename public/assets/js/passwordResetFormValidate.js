@@ -1,13 +1,7 @@
 $(document).ready(function () {
 
-  $('#formSignup').validate({
+  $('#formPassword').validate({
     rules: {
-      name: 'required',
-      email: {
-        required: true,
-        email: true,
-        remote: '/account/validate-email'
-      },
       password: {
         required: true,
         minlength: 6,
