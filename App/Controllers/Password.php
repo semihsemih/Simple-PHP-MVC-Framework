@@ -24,12 +24,31 @@ class Password extends Controller
     {
         $token = $this->route_params['token'];
 
+        $user = $this->getUserOrExit($token);
+
+        View::renderTemplate('Password/reset.twig', [
+            'token' => $token
+        ]);
+    }
+
+    public function resetPasswordAction()
+    {
+        $token = $_POST['token'];
+
+        $user = $this->getUserOrExit($token);
+
+        echo "Reset user's password here.";
+    }
+
+    public function getUserOrExit($token)
+    {
         $user = User::findByPasswordReset($token);
 
         if ($user) {
-            View::renderTemplate('Password/reset.twig');
+            return $user;
         } else {
-            echo "Password reset token invalid.";
+            View::renderTemplate('Password/token_expired.twig');
+            exit;
         }
     }
 }
