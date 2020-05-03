@@ -52,7 +52,7 @@ class User extends Model
             $this->errors[] = 'Invalid email';
         }
 
-        if (static::emailExists($this->email)) {
+        if (static::emailExists($this->email, $this->id ?? null)) {
             $this->errors[] = 'Email already taken.';
         }
 
@@ -69,9 +69,17 @@ class User extends Model
         }
     }
 
-    public static function emailExists($email)
+    public static function emailExists($email, $ignore_id = null)
     {
-        return static::findByEmail($email) !== false;
+        $user = static::findByEmail($email);
+
+        if ($user) {
+            if ($user->id !== $ignore_id) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static function findByEmail($email)
@@ -202,5 +210,14 @@ class User extends Model
             }
         }
 
+    }
+
+    public function resetPassword($password)
+    {
+        $this->password = $password;
+
+        $this->validate();
+
+        return empty($this->errors);
     }
 }
