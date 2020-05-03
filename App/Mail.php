@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 
 class Mail
 {
-    public static function send($from, $to, $subject, $text, $html)
+    public static function send($to, $subject, $text, $html)
     {
         $mail = new PHPMailer(true);
 
@@ -22,7 +22,7 @@ class Mail
             $mail->Port = 587;
 
             //Recipients
-            $mail->setFrom($from);
+            $mail->setFrom("site-admin@example.com");
             $mail->addAddress($to);
 
             // Content
